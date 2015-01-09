@@ -15,6 +15,11 @@ static const char helpString[]=
 A Brainfuck compiler for 64bit Linux and mac\n\
 Marten Chang 2015.\n\
 \n\
+Options:\n\
+\t-o output file path\n\
+\t-S output ASM source file insted of executable\n\
+\t-h show this help\n\
+\n\
 ";
 
 int main(int argc,char** argv)
@@ -22,7 +27,10 @@ int main(int argc,char** argv)
         bool outputAsm = false;
         bool outSet = false;
         if(argc == 1)//no args
+	{
                 cout << helpString;
+		exit(0);
+	}
 
         string sourcePath;
         string outputPath;
