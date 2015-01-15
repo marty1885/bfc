@@ -39,19 +39,21 @@ int main(int argc,char** argv)
     {
         if(argv[i][0] == '-')
         {
-            if(argv[i][1] == 'o')
-            {
-                outputPath = argv[i+1];
-                outSet = true;
-                i++;
+            switch (argv[i][1]) {
+                case 'o': // output file path
+                    outputPath = argv[i+1];
+                    outSet = true;
+                    i++;
+                    break;
+
+                case 'h': // help
+                    cout << helpString;
+                    exit(0);
+
+                case 'S': // output assembly
+                    outputAsm = true;
+                    break;
             }
-            if(argv[i][1] == 'h')
-            {
-                cout << helpString;
-                exit(0);
-            }
-            if(argv[i][1] == 'S')
-                outputAsm = true;
         }
         else
             sourcePath = argv[i];
