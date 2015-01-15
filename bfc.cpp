@@ -53,6 +53,10 @@ int main(int argc,char** argv)
                 case 'S': // output assembly
                     outputAsm = true;
                     break;
+
+                default:
+                    cerr << "Unknow option: " << argv[i];
+                    break;
             }
         }
         else
