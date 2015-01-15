@@ -34,6 +34,7 @@ int main(int argc,char** argv)
 
     string sourcePath;
     string outputPath;
+    string outputFormat = "elf64";
 
     for(int i=1;i<argc;i++)
     {
@@ -52,6 +53,11 @@ int main(int argc,char** argv)
 
                 case 'S': // output assembly
                     outputAsm = true;
+                    break;
+
+                case 'f': // nasm output format
+                    outputFormat = argv[i+1];
+                    i++;
                     break;
 
                 default:
@@ -84,8 +90,8 @@ int main(int argc,char** argv)
         asmOut << asmCode;
         asmOut.close();
         char* command = new char[4000];
-        sprintf(command,"nasm -f elf64 cache.asm -o cache.o && gcc ./cache.o -o %s",
-                outputPath.c_str());
+        sprintf(command,"nasm -f %s cache.asm -o cache.o && gcc ./cache.o -o %s",
+                outputFormat.c_str(), outputPath.c_str());
 
         int success = system(command);
         remove("./cache.asm");
