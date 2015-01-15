@@ -17,6 +17,7 @@ Marten Chang 2015.\n\
 \n\
 Options:\n\
 \t-o output file path\n\
+\t-f output file format (`nasm -hf` for more information)\n\
 \t-S output ASM source file insted of executable\n\
 \t-h show this help\n\
 \n\
